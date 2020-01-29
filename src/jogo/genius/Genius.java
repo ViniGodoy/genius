@@ -106,7 +106,7 @@ public class Genius {
 
                 //Se a sequencia terminou, voltamos a ouvir o jogador
                 if (sequencia.acabou())
-                    trocarEstado(Estado.OUVINDO);
+                    trocarEstado();
                 break;
 
             case OUVINDO:
@@ -129,7 +129,7 @@ public class Genius {
                 // Se o jogador terminou a sequencia, alteramos para o estado
                 // TOCANDO.
                 if (indPressionamento == sequencia.tamanho() - 1) {
-                    trocarEstado(Estado.TOCANDO);
+                    trocarEstado();
                     return;
                 }
 
@@ -137,7 +137,7 @@ public class Genius {
         }
     }
 
-    private void trocarEstado(Estado ouvindo) {
+    private void trocarEstado() {
         if (estado == Estado.TOCANDO) {
             estado = Estado.OUVINDO;
             indPressionamento = -1;

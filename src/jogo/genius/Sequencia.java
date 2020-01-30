@@ -39,8 +39,10 @@ public class Sequencia {
         // Temos que esperar ele soltar para pressionar o próximo botão.
         int indUltBotao = indiceSequencia == 0 ? -1 : sequencia.get(
                 indiceSequencia - 1).ordinal();
-        if (indUltBotao >= 0 && botoes.get(indUltBotao).estaPressionado())
+
+        if (indUltBotao >= 0 && botoes.get(indUltBotao).estaPressionado()) {
             return;
+        }
 
         // Caso contrário, pressionamos ele e passamos para o próximo
         // botão da sequencia
@@ -48,8 +50,9 @@ public class Sequencia {
         indiceSequencia++;
 
         // Se a sequencia acabou, reiniciamos o índice.
-        if (indiceSequencia == sequencia.size())
+        if (indiceSequencia == sequencia.size()) {
             indiceSequencia = -1;
+        }
     }
 
     public boolean acabou() {

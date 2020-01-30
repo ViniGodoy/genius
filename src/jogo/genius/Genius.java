@@ -43,8 +43,9 @@ public class Genius {
 
         // Cria um vetor com os botões.
         Cor[] cores = Cor.values();
-        for (var i = 0; i < cores.length; i++)
+        for (var i = 0; i < cores.length; i++) {
             botoes.add(new Botao(this, cores[i], x[i], y[i], 100));
+        }
     }
 
     /**
@@ -55,9 +56,11 @@ public class Genius {
     }
 
     private boolean temBotaoPressionado() {
-        for (var botao : botoes)
-            if (botao.estaPressionado())
+        for (var botao : botoes) {
+            if (botao.estaPressionado()) {
                 return true;
+            }
+        }
 
         return false;
     }
@@ -70,10 +73,10 @@ public class Genius {
             return;
         }
 
-
         // Ignora pressionamentos se já tem alguém pressionado.
-        if (temBotaoPressionado())
+        if (temBotaoPressionado()) {
             return;
+        }
 
         // Caso contrário, capturamos o clique do jogador.
         // E verificamos se a sequencia está correta.
@@ -105,18 +108,21 @@ public class Genius {
                 sequencia.processar(botoes);
 
                 //Se a sequencia terminou, voltamos a ouvir o jogador
-                if (sequencia.acabou())
+                if (sequencia.acabou()) {
                     trocarEstado();
+                }
                 break;
 
             case OUVINDO:
                 // Aguardamos o último botão ser solto.
-                if (botaoPressionado)
+                if (botaoPressionado) {
                     return;
+                }
 
                 // Aguardamos o jogador pressionar o primeiro botão
-                if (indPressionamento == -1)
+                if (indPressionamento == -1) {
                     return;
+                }
 
                 // Verificamos o último botão pressionado é o correto.
                 // Se não for, terminamos o jogo.
@@ -159,8 +165,9 @@ public class Genius {
         graphics2D.clearRect(0, 0, 640, 480);
 
         // Agora, vamos desenhar os 4 botões
-        for (Botao botao : botoes)
+        for (Botao botao : botoes) {
             botao.desenhar(graphics2D);
+        }
     }
 
     /**
@@ -169,11 +176,11 @@ public class Genius {
      * @param botao Botão que se soltou.
      */
     public void botaoSoltou(Botao botao) {
-        if (estado == Estado.TOCANDO)
+        if (estado == Estado.TOCANDO) {
             return;
+        }
 
         botaoPressionado = false;
         ultCorPressionada = botao.getCor();
     }
-
 }

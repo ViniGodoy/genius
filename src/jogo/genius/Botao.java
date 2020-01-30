@@ -60,8 +60,9 @@ public class Botao {
      */
     public void processar(double segundos) {
         // Está solto? Não precisamos fazer nada.
-        if (estado == Estado.SOLTO)
+        if (estado == Estado.SOLTO) {
             return;
+        }
 
         // Calculamos o tempo pressionado
         tempoPressionado += segundos;
@@ -86,10 +87,11 @@ public class Botao {
 
         // Desenhamos o botão. Se estiver no estado pressionado,
         // desenhamos com a cor mais clara.
-        if (estado == Estado.SOLTO)
+        if (estado == Estado.SOLTO) {
             g2d.setColor(cor.getCorSolto());
-        else
+        } else {
             g2d.setColor(cor.getCorPressionado());
+        }
 
         // Desenhamos a eclipse
         g2d.fill(forma);
@@ -120,5 +122,4 @@ public class Botao {
     public Cor getCor() {
         return cor;
     }
-
 }
